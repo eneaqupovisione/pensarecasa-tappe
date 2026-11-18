@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pensarecasa · come curare ogni tappa</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Rubik:wght@400;500&display=swap');
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#F6F2EA;color:#22201C;font-family:Rubik,system-ui,sans-serif;font-size:15px;line-height:1.4}
+.wrap{max-width:620px;margin:0 auto;padding:16px 14px 40px}
+h1{font-family:'Libre Baskerville',Georgia,serif;font-size:21px;margin:0 0 6px;line-height:1.25}
+h2{font-family:'Libre Baskerville',Georgia,serif;font-size:18px;margin:0;line-height:1.25}
+h3{font-family:'Libre Baskerville',Georgia,serif;font-size:15px;margin:0 0 8px}
+.intro{font-size:14px;color:#4a453c;margin:0 0 14px}
+.tappe{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:0 0 12px}
+.tp{font:inherit;border:1.5px solid #cfc7b6;background:#fffdf8;border-radius:9px;padding:5px 3px 6px;cursor:pointer;text-align:center;position:relative;min-height:58px;color:#22201C}
+.tp b{display:block;font-family:'Libre Baskerville',Georgia,serif;font-size:16px}
+.tp span{display:block;font-size:10.5px;line-height:1.15;color:#6E665A}
+.tp.on{background:#22201C;border-color:#22201C;color:#fff}.tp.on span{color:#e9e2d4}
+.tp .ok{position:absolute;top:3px;right:4px;font-size:10px;background:#2e7d4f;color:#fff;border-radius:8px;padding:0 4px;line-height:14px}
+.tp .pp{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:var(--pc);border:2px solid #F6F2EA}
+.per{display:flex;gap:6px;align-items:center;overflow-x:auto;white-space:nowrap;margin:0 0 14px;scrollbar-width:none}
+.per .et{font-size:12px;color:#6E665A;flex:none}
+.btn{font:inherit;font-size:12.5px;padding:5px 9px;border:1.5px solid var(--b,#b7ae9c);border-radius:16px;background:#fffdf8;cursor:pointer;color:#22201C;flex:none}
+.btn.on{background:var(--b,#22201C);color:#fff;border-color:var(--b,#22201C)}
+.card{background:#fffdf8;border:1px solid #e3dccd;border-radius:12px;padding:13px 12px;margin:0 0 12px}
+.sub{color:#6E665A;font-size:13px;margin:3px 0 0}
+.buco{margin:10px 0 0;padding:8px 10px;border-radius:8px;background:#f4ecdf;font-size:14px}
+.buco b{font-weight:500}
+.chi{margin:8px 0 0;font-size:13px}
+.chi i{font-style:normal;display:inline-block;padding:1px 7px;border-radius:9px;color:#fff;margin:2px 4px 2px 0;font-size:12px}
+.lente{margin:14px 0 0}
+.lt{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+.lt b{font-size:13px;color:var(--lc);font-weight:500}
+.lt span{font-size:12px;color:#8a8273}
+.tec{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;font:inherit;background:#fff;border:1.5px solid #e3dccd;border-left:4px solid var(--lc);border-radius:9px;padding:8px 10px;margin:0 0 6px;cursor:pointer;color:#22201C}
+.tec .box{flex:none;width:20px;height:20px;border:2px solid var(--lc);border-radius:5px;margin-top:1px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;line-height:1}
+.tec.on{background:color-mix(in srgb,var(--lc) 9%,white);border-color:var(--lc)}
+.tec.on .box{background:var(--lc)}
+.tec .tx b{font-weight:500;display:block;font-size:14.5px}
+.tec .tx span{font-size:12.5px;color:#6E665A}
+.tec .tx .costo{font-size:11px;color:#6E665A;border:1px solid #d9d1c1;border-radius:8px;padding:0 5px;margin-left:4px;white-space:nowrap;display:inline}
+.vuoto{font-size:13px;color:#a89f8e;font-style:italic;margin:0 0 6px}
+.mix{border:2px solid #22201C}
+.mix ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+.mix .tipo{font-size:13px;margin:6px 0 0;font-weight:500}
+.mix .q{font-size:12.5px;color:#6E665A;margin:8px 0 0}
+.mix .q li{margin:2px 0}
+.piano li{margin:4px 0;font-size:14px}
+.piano .az{display:flex;gap:8px;margin-top:10px}
+.foot{font-size:12px;color:#8a8273;margin-top:18px}
+details{font-size:13.5px}
+details summary{cursor:pointer;font-family:'Libre Baskerville',Georgia,serif;font-size:15px}
+details ul{margin:8px 0 0;padding-left:18px}
+details li{margin:4px 0}
+</style></head><body><div class="wrap">
+<h1>Pensarecasa · come curare ogni tappa</h1>
+<p class="intro">Scegli una tappa del journey: vedi cosa manca ai 25–35 anni e le tecniche per curarla, da tre prospettive. Spunta quelle che ti convincono, anche mischiandole.</p>
+
+<div class="tappe" id="tappe"></div>
+<div class="per" id="per"></div>
+
+<div class="card" id="tappa"></div>
+<div class="card mix" id="mix"></div>
+<div class="card piano" id="piano"></div>
+
+<details class="card"><summary>I paletti: cosa ogni idea deve reggere</summary><ul>
+<li><b>Fascia media.</b> Cucine da 4.900 a 9.200 €, pacchetto tre stanze a 14.900 €.</li>
+<li><b>Niente soldi da parte.</b> Utile negativo in 5 anni su 7; patrimonio di 68 mila € su 9,5 milioni di attivo. Un'idea che costa va pagata da qualcun altro o deve ripagarsi presto.</li>
+<li><b>Due anni.</b> L'orizzonte della challenge.</li>
+<li><b>Due reti.</b> 18 negozi propri e circa 30 partner, soprattutto al Sud: quello che si fa nei propri non è detto che si possa fare nei partner.</li>
+<li><b>Mercato fermo.</b> In quantità −10% dal 2022: chi cresce toglie clienti a qualcun altro.</li>
+<li><b>La target è piccola.</b> I 25–34 sono circa il 9% dei clienti probabili.</li>
+<li><b>Il rivale è Febal.</b> Presente in 36 delle 39 province di Pensarecasa, con render e appuntamento online.</li>
+<li><b>Da non rompere:</b> la visita in negozio, il prezzo chiuso della casa intera, il su misura.</li>
+</ul></details>
+
+<p class="foot">Pensarecasa project work, verso la Fase 2 · 18 novembre 2026. Cosa manca in ogni tappa viene dal customer journey della Fase 1. Le tecniche e i costi sono un ragionamento del gruppo (Indizio). Gli esempi di altre aziende sono casi noti da verificare alla fonte. Le scelte restano su questo telefono o computer.</p>
+</div>
+<script>
+const LENTI={T:{n:'Tecnologia',d:'con quale mezzo',c:'#0E7C86'},P:{n:'Trovata pubblicitaria',d:'con quale colpo d\'ingegno',c:'#B07A00'},O:{n:'Modello di offerta',d:'cosa si vende e come',c:'#A23B72'}};
+const PERS=[{id:'p1',n:'Prima casa',c:'#2F5D8A',t:{8:'paga l\'acconto più alto',9:'conta i giorni al trasloco',10:'più stanze, più consegne'}},
+{id:'p2',n:'Famiglia',c:'#2E7D6B',t:{3:'la cameretta non ha prezzo',7:'chiede «quanto al mese?»'}},
+{id:'p3',n:'Affitto',c:'#B8461B',t:{2:'sta su TikTok e Instagram',3:'budget di 774–1.106 €',4:'non ha un negozio vicino'}},
+{id:'p4',n:'Casa di famiglia',c:'#7A5C99',t:{6:'casa vecchia, muri storti',10:'c\'è la cucina vecchia da togliere'}}];
+// [lente, nome, riga, costo]
+const T=[
+{n:'Nasce il bisogno',c:'Bisogno',buco:'Intercettare la data che fa nascere il bisogno: rogito, trasloco, nascita, uscita di casa. Da quale momento arrivino i clienti oggi, non si sa.',tec:[
+['T','Contenuti per evento di vita','post e video su prima casa, figlio in arrivo, prima casa in affitto','basso'],
+['T','Annunci a chi cerca mutuo o trasloco','pubblicità mirata per età, zona e momento','medio'],
+['T','Uno strumento utile prima di comprare','per esempio la lista delle cose da fare per il trasloco','basso'],
+['P','Momento di vita','esserci al rogito, alla nascita, al trasloco','basso'],
+['P','Collaborazioni','agenzie immobiliari e banche dei mutui incontrano la target prima di voi','basso'],
+['P','Utilità','una pubblicità che serve a qualcosa. Esempio: IKEA, l\'annuncio-test di gravidanza (2018)','medio']]},
+{n:'Scopre chi vende',c:'Scopre',buco:'Farsi conoscere da chi non conosce il marchio, dove stanno i 25–35 (video e social; Facebook per chi ha figli) e dove comprano casa.',tec:[
+['T','Video, TikTok e Instagram','dove sta chi è in affitto; oggi YouTube è fermo al 2013','basso'],
+['T','Gruppi Facebook dei genitori','l\'unica strada in cui Pensarecasa c\'è già','basso'],
+['T','Annunci mirati per età e zona','oggi il 42,8% delle visite arriva da annunci, ma non mirati','medio'],
+['T','Farsi trovare senza il nome','il sito trovato anche da chi cerca «cucina prima casa»','basso'],
+['P','Ironia','punzecchiare i grandi. Esempio: IKEA «Bookbook» (2014)','basso'],
+['P','Cliente come pubblicità','sono i clienti a far girare il marchio. Esempio: Spotify Wrapped','basso'],
+['P','Collaborazioni con creator','persone vicine alla target che arredano casa','medio'],
+['P','Valori','sostenibilità con i fatti. Esempio: IKEA «Buy Back Friday» (2020)','medio'],
+['O','Un prodotto d\'ingresso','un pezzo o una stanza a prezzo basso, che porta il marchio a chi spende poco','medio']]},
+{n:'Si informa e confronta',c:'Si informa',buco:'Sapere prima di entrare quanto costa il tutto (trasporto, montaggio, tempi) e quanto costa una stanza sola. Per chi non ha un negozio vicino, andare avanti senza entrarci.',tec:[
+['T','Preventivatore online','con trasporto e montaggio compresi','medio'],
+['T','Prezzi e acquisto online dei pezzi piccoli','camerette con il prezzo, soggiorno «Nordico» comprabile','medio'],
+['T','Configuratore 3D o in realtà aumentata','la cucina vista nella propria stanza','alto'],
+['T','Simulatore della rata','quanto al mese, già sul sito','basso'],
+['T','Case vere con il prezzo','foto di clienti, con quanto hanno speso','basso'],
+['P','Prezzo chiaro','il prezzo leggibile come messaggio. Esempio: Tesla, prezzo fisso senza trattativa','basso'],
+['P','Le recensioni del dopo','far vedere com\'è andata la consegna, non solo il negozio','basso'],
+['O','Pacchetto tutto compreso','un prezzo solo, anche per una stanza sola','basso'],
+['O','Pezzo o stanza singola','acquisti sotto i 5.000 €, anche online','medio'],
+['O','Moduli','si parte da poco e si aggiunge dopo','medio']]},
+{n:'Prende contatto',c:'Contatto',buco:'Un appuntamento certo, scelto da sé, anche a distanza per chi non ha un negozio vicino. Febal lo fa già.',tec:[
+['T','Calendario online','giorno e fascia oraria scelti dal cliente','basso'],
+['T','WhatsApp per prenotare','conferma e promemoria','basso'],
+['T','Consulenza in video','per le regioni e le città senza negozio','basso'],
+['T','Primo progetto da una foto','il cliente manda la piantina prima di venire','medio'],
+['O','Progetto a distanza come servizio','un servizio a sé, anche senza negozio','medio']]},
+{n:'Incontra il consulente',c:'Consulente',buco:'Poco: è la tappa che va già bene, da non rompere. Restano una risposta scritta sui tempi già qui e una visita pensata per chi compra poco.',tec:[
+['T','La data di consegna già al primo incontro','scritta, non solo detta','basso'],
+['T','Progettare insieme su uno schermo','il cliente vede mentre si decide','medio'],
+['O','Percorso rapido per una stanza sola','una visita corta per chi spende poco','basso']]},
+{n:'Riceve progetto e prezzo',c:'Progetto',buco:'Vedere il progetto e un prezzo completo e confrontabile prima di firmare. Per chi rifà una casa vecchia, anche un rilievo affidabile e il vecchio portato via.',tec:[
+['T','Render garantito in ogni negozio','oggi è a carico del negozio e non è promesso','medio'],
+['T','Preventivo sempre nella stessa forma','completo, da mettere accanto a quello degli altri','basso'],
+['T','Rilievo con lo scanner del telefono','misure precise anche in una casa storta','medio'],
+['T','Il progetto da portare a casa','salvato online, da guardare con il partner o i genitori','basso'],
+['P','Prova senza rischio','cambiare il progetto senza costi fino alla firma. Esempio: Casper, 100 notti di prova','basso'],
+['O','Pacchetto con tutto dentro','trasporto, montaggio e smontaggio del vecchio','basso'],
+['O','Ritiro del vecchio','l\'AD ci sta già pensando','medio'],
+['O','Garanzia lunga','Scavolini dà 10 anni, Lube 5, IKEA 25 sulle cucine','medio']]},
+{n:'Sceglie come pagare',c:'Pagare',buco:'Conoscere costo e condizioni delle rate prima di sedersi al tavolo, separate dalla proposta di salire di fascia.',tec:[
+['T','Condizioni delle rate scritte e valide','oggi online c\'è solo Agos, scaduta il 2/4/2025','basso'],
+['T','Rate per i piccoli importi','tipo Klarna o Scalapay','basso'],
+['T','Simulatore della rata','sul sito e al tavolo','basso'],
+['P','Prezzo in rate','la rata mensile come prezzo principale. Esempio: IKEA «Buy with your time» (2022)','basso'],
+['O','Moduli','un pezzo ora, il resto dopo','medio'],
+['O','Noleggio o abbonamento','si paga l\'uso invece del mobile','alto']]},
+{n:'Firma l\'ordine',c:'Firma',buco:'Sapere per iscritto cosa tutela l\'acconto, soprattutto quando è grosso.',tec:[
+['T','Condizioni di vendita online','oggi non ce ne sono','basso'],
+['T','Riepilogo scritto mandato subito','su WhatsApp o per email','basso'],
+['T','Firma elettronica e acconto tracciato','tutto in un\'area cliente','basso'],
+['P','Prova senza rischio','una garanzia scritta sull\'acconto','medio'],
+['O','Garanzia lunga nel contratto','scritta, con la durata','medio']]},
+{n:'Aspetta',c:'Aspetta',buco:'Una data scritta e un modo di vedere a che punto è l\'ordine. È il bisogno più netto di chi spende di più.',tec:[
+['T','Tracciamento dell\'ordine','come per un pacco','medio'],
+['T','Un avviso a ogni passaggio','in produzione, partito, in arrivo','basso'],
+['T','Previsione più precisa della data','dai dati degli ordini passati','medio'],
+['P','Data garantita','una data limite scritta, con qualcosa in cambio se salta. Scavolini scrive una data limite','alto']]},
+{n:'Riceve i mobili e li fa montare',c:'Montaggio',buco:'Un montaggio completo e giusto alla prima volta, nel giorno detto. Per la casa di famiglia, anche lo smontaggio del vecchio.',tec:[
+['T','Montaggio prenotato online','giorno e fascia oraria scelti','basso'],
+['T','Lista di controllo del montatore','con le foto a lavoro finito','basso'],
+['T','Controllo dei pezzi prima della partenza','niente pezzi mancanti','medio'],
+['T','Avviso il giorno prima','e quando il montatore arriva','basso'],
+['P','Montaggio garantito','«giusto alla prima, o lo rifacciamo gratis», detto in pubblico','medio'],
+['O','Pacchetto con smontaggio del vecchio','tolto e portato via','medio'],
+['O','Ritiro dell\'usato','il vecchio rivenduto o rigenerato','medio']]},
+{n:'Vive con i mobili',c:'Dopo',buco:'Un canale con tempi di risposta e una garanzia scritta che duri quanto l\'uso.',tec:[
+['T','Assistenza su WhatsApp','con tempi di risposta promessi','basso'],
+['T','Assistenza in video','e segnalazione del problema con una foto','basso'],
+['T','Brevi video per i piccoli interventi','regolare un\'anta, cambiare un pezzo','basso'],
+['T','Richiami al momento giusto','controllo dopo un anno, refitting','basso'],
+['P','Valori','ricomprare o ritirare i mobili usati. Esempio: IKEA «Buy Back Friday»','medio'],
+['O','Garanzia lunga','Scavolini 10 anni, Lube 5, IKEA 25','medio'],
+['O','Refitting','ante e colore nuovi per circa 1.500 €; l\'AD ci sta già pensando','basso'],
+['O','Moduli','si aggiunge quando la famiglia cresce','medio']]},
+{n:'Giudica e ne parla',c:'Ne parla',buco:'Un giudizio raccolto dopo la consegna, che racconti il percorso intero, e un legame con chi tornerà.',tec:[
+['T','Recensione chiesta dopo il montaggio','oggi arriva alla firma: misura solo il negozio','basso'],
+['T','Contenuti dei clienti','le loro case, condivise','basso'],
+['T','Programma per chi torna','oggi 68 recensioni su 996 dicono di essere tornate','basso'],
+['P','Cliente come pubblicità','Esempio: «Share a Coke», col nome sulla lattina','basso'],
+['P','Porta un amico','un premio a chi consiglia','basso'],
+['O','Ritiro dell\'usato','un motivo per tornare','medio']]}];
+
+const KEY='pensarecasa-tappe-v1';
+let scelte={};try{scelte=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+let cur=0,pers=null;
+const $=s=>document.querySelector(s);
+const salva=()=>{try{localStorage.setItem(KEY,JSON.stringify(scelte))}catch(e){}};
+const sel=i=>scelte[i]||[];
+function strip(){
+ const P=PERS.find(p=>p.id===pers);
+ $('#tappe').innerHTML=T.map((t,i)=>`<button class="tp${i===cur?' on':''}" data-t="${i}">${sel(i).length?`<span class="ok">${sel(i).length}</span>`:''}<b>${i+1}</b><span>${t.c}</span>${P&&P.t[i+1]?`<i class="pp" style="--pc:${P.c}"></i>`:''}</button>`).join('');
+ $('#per').innerHTML='<span class="et">Dove si decide per</span>'+PERS.map(p=>`<button class="btn${pers===p.id?' on':''}" style="--b:${p.c}" data-p="${p.id}">${p.n}</button>`).join('');
+}
+function tappa(){
+ const t=T[cur],s=sel(cur);
+ const chi=PERS.filter(p=>p.t[cur+1]).map(p=>`<i style="background:${p.c}">${p.n}</i> ${p.t[cur+1]}`).join('<br>');
+ const lenti=Object.keys(LENTI).map(k=>{
+  const L=LENTI[k],ts=t.tec.map((x,j)=>[x,j]).filter(([x])=>x[0]===k);
+  const body=ts.length?ts.map(([x,j])=>`<button class="tec${s.includes(j)?' on':''}" style="--lc:${L.c}" data-j="${j}"><span class="box">${s.includes(j)?'✓':''}</span><span class="tx"><b>${x[1]}<span class="costo">costo ${x[3]}</span></b><span>${x[2]}</span></span></button>`).join(''):`<p class="vuoto">Qui questa prospettiva ha poco da dire: la tappa chiede altro.</p>`;
+  return `<div class="lente" style="--lc:${L.c}"><div class="lt"><b>${L.n}</b><span>${L.d}</span></div>${body}</div>`}).join('');
+ $('#tappa').innerHTML=`<h2>${cur+1} · ${t.n}</h2><p class="sub">Tocca una tecnica per sceglierla.</p><p class="buco"><b>Cosa manca:</b> ${t.buco}</p>${chi?`<p class="chi">Qui si decide per:<br>${chi}</p>`:''}${lenti}`;
+}
+function mix(){
+ const t=T[cur],s=sel(cur);
+ if(!s.length){$('#mix').innerHTML=`<h3>La tua scelta per la tappa ${cur+1}</h3><p class="sub">Ancora niente. Spunta una o più tecniche qui sopra.</p>`;return}
+ const ls=[...new Set(s.map(j=>t.tec[j][0]))];
+ const tipo=ls.length>1?`Tecnica mista: ${ls.map(k=>LENTI[k].n.toLowerCase()).join(' + ')}.`:`Una prospettiva sola: ${LENTI[ls[0]].n.toLowerCase()}. Puoi aggiungerne una di un'altra prospettiva.`;
+ const alto=s.some(j=>t.tec[j][3]==='alto');
+ $('#mix').innerHTML=`<h3>La tua scelta per la tappa ${cur+1}</h3><ul>${s.map(j=>`<li><b style="color:${LENTI[t.tec[j][0]].c}">${t.tec[j][1]}</b></li>`).join('')}</ul><p class="tipo">${tipo}</p>
+ <ul class="q"><li>${alto?'<b>C\'è una tecnica dal costo alto:</b> chi la paga, se l\'azienda non ha soldi da parte?':'Costa poco o si ripaga presto?'}</li><li>Funziona anche nei circa 30 negozi partner?</li><li>Si fa in due anni?</li><li>Febal lo fa già? Se sì, cosa la rende diversa?</li></ul>`;
+}
+function piano(){
+ const righe=T.map((t,i)=>sel(i).length?`<li><b>${i+1} · ${t.n}:</b> ${sel(i).map(j=>t.tec[j][1]).join(' + ')}</li>`:'').join('');
+ $('#piano').innerHTML=`<h3>Il tuo piano, tappa per tappa</h3>${righe?`<ul>${righe}</ul><div class="az"><button class="btn" data-a="copia">Copia il piano</button><button class="btn" data-a="azzera">Azzera</button></div>`:'<p class="sub">Qui si raccolgono le tecniche scelte in tutte le tappe.</p>'}`;
+}
+function tutto(){strip();tappa();mix();piano()}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-t],[data-p],[data-j],[data-a]');if(!b)return;
+ if(b.dataset.t){cur=+b.dataset.t;tutto()}
+ else if(b.dataset.p){pers=pers===b.dataset.p?null:b.dataset.p;strip()}
+ else if(b.dataset.j){const j=+b.dataset.j,s=sel(cur);scelte[cur]=s.includes(j)?s.filter(x=>x!==j):[...s,j].sort((a,b)=>a-b);salva();strip();tappa();mix();piano()}
+ else if(b.dataset.a==='copia'){const txt='Pensarecasa · il piano tappa per tappa\n'+T.map((t,i)=>sel(i).length?`${i+1}. ${t.n}: ${sel(i).map(j=>t.tec[j][1]).join(' + ')}`:'').filter(Boolean).join('\n');navigator.clipboard.writeText(txt).then(()=>{b.textContent='Copiato'},()=>{prompt('Copia da qui:',txt)})}
+ else if(b.dataset.a==='azzera'){if(confirm('Togliere tutte le scelte?')){scelte={};salva();tutto()}}
+});
+tutto();
+</script></body></html>
