@@ -35,22 +35,27 @@ h3{font-family:'Libre Baskerville',Georgia,serif;font-size:15px;margin:0 0 8px}
 .fh .n{flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid #b7ae9c;display:flex;align-items:center;justify-content:center;font-size:12px;color:#6E665A}
 .fh .nm{flex:1;font-weight:500;font-size:15px}
 .fh .st{font-size:12px;color:#6E665A}
-.fam.ok .fh .n{background:#22201C;border-color:#22201C;color:#fff}
 .fam.open .fh .n{border-color:#22201C;color:#22201C}
-.fam.ok.open .fh .n{color:#fff}
+.fam.ok .fh .nm::after{content:' · con bozze';font-weight:400;font-size:12px;color:#6E665A}
 .fb{padding:0 0 14px 34px}
 .dom{font-family:'Libre Baskerville',Georgia,serif;font-size:14.5px;margin:0 0 10px;line-height:1.4}
-.tec{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;font:inherit;background:#fff;border:1.5px solid #e3dccd;border-radius:9px;padding:8px 10px;margin:0 0 6px;cursor:pointer;color:#22201C}
-.tec .box{flex:none;width:20px;height:20px;border:2px solid #22201C;border-radius:5px;margin-top:1px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;line-height:1}
-.tec.on{background:#f4ecdf;border-color:#22201C}
-.tec.on .box{background:#22201C}
-.tec .tx{flex:1}
+.tec{background:#fff;border:1.5px solid #e3dccd;border-radius:9px;padding:9px 10px;margin:0 0 8px}
+.tec.piena{border-color:#22201C}
 .tec .tx b{font-weight:500;display:block;font-size:14.5px}
 .tec .tx>span{font-size:12.5px;color:#6E665A;display:block}
+.bz{list-style:none;margin:8px 0 0;padding:0}
+.bz li{background:#f4ecdf;border-radius:7px;padding:7px 9px;margin:0 0 5px;font-size:14px}
+.bz .bt{display:block;white-space:pre-wrap}
+.bza{display:flex;gap:12px;margin-top:3px}
+.bza button,.del{font:inherit;font-size:12px;color:#6E665A;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline}
+.scrivi{margin-top:8px}
+.scrivi textarea{font:inherit;font-size:15px;width:100%;padding:7px 8px;border:1.5px solid #22201C;border-radius:7px;background:#fffdf8;resize:vertical}
+.tec .add{margin-top:8px}
+.add.sott{margin-top:4px}
+.rt{font-weight:500;font-size:14px;margin:10px 0 0}
 .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .tag{font-size:11px;color:#4a453c;background:#efe8da;border-radius:8px;padding:0 6px;line-height:17px}
 .tag.c{background:transparent;border:1px solid #d9d1c1;color:#6E665A}
-.del{flex:none;font-size:12px;color:#8a8273;cursor:pointer;padding:0 2px}
 .vuoto{font-size:13px;color:#8a8273;margin:0 0 8px}
 .add{font:inherit;font-size:12.5px;color:#4a453c;background:none;border:1.5px dashed #cfc7b6;border-radius:9px;padding:7px 10px;cursor:pointer;width:100%;text-align:left}
 .form{border:1.5px solid #22201C;border-radius:9px;padding:9px 10px;background:#fff}
@@ -66,6 +71,7 @@ h3{font-family:'Libre Baskerville',Georgia,serif;font-size:15px;margin:0 0 8px}
 .mix .q{font-size:12.5px;color:#6E665A;margin:8px 0 0}
 .mix .q li{margin:2px 0}
 .piano li{margin:4px 0;font-size:14px}
+.piano ul ul{padding-left:16px;margin:2px 0 6px}
 .foot{font-size:12px;color:#8a8273;margin-top:18px}
 details{font-size:13.5px}
 details summary{cursor:pointer;font-family:'Libre Baskerville',Georgia,serif;font-size:15px}
@@ -74,7 +80,7 @@ details li{margin:4px 0}
 </style></head><body><div class="wrap">
 <h1>Pensarecasa · come curare ogni tappa</h1>
 <div class="intro">Un procedimento per il brainstorming, una tappa alla volta:
-<ol><li>leggi cosa manca al cliente in quella tappa;</li><li>passa le sette famiglie di tecniche, una dopo l'altra: per ognuna c'è una domanda, le tecniche già pensate e lo spazio per le vostre;</li><li>spunta quelle che vi convincono, anche di famiglie diverse;</li><li>chiudi la tappa col riepilogo e passa alla successiva.</li></ol></div>
+<ol><li>leggi cosa manca al cliente in quella tappa;</li><li>passa le sette famiglie di tecniche, una dopo l'altra: per ognuna c'è una domanda e le tecniche già pensate;</li><li>dentro ogni tecnica scrivete le vostre bozze di idee, anche grezze; se manca una tecnica, aggiungetela;</li><li>alla fine della tappa rileggete le bozze con le domande dei paletti, e passate alla successiva.</li></ol></div>
 
 <div class="riga strada" id="strada"></div>
 <div class="card" id="tappa"></div>
@@ -96,7 +102,7 @@ details li{margin:4px 0}
 <li><b>Da non rompere:</b> la visita in negozio, il prezzo chiuso della casa intera, il su misura.</li>
 </ul></details>
 
-<p class="foot">Pensarecasa project work, verso la Fase 2 · 18 novembre 2026. Cosa manca in ogni tappa viene dal customer journey della Fase 1. Le tecniche, le famiglie e i costi sono un ragionamento del gruppo (Indizio). Gli esempi di altre aziende sono casi noti da verificare alla fonte. Scelte e idee aggiunte restano su questo telefono o computer: per metterle insieme, ognuno copia il suo piano nella chat del gruppo.</p>
+<p class="foot">Pensarecasa project work, verso la Fase 2 · 18 novembre 2026. Cosa manca in ogni tappa viene dal customer journey della Fase 1. Le tecniche, le famiglie e i costi sono un ragionamento del gruppo (Indizio). Gli esempi di altre aziende sono casi noti da verificare alla fonte. Bozze e tecniche aggiunte restano su questo telefono o computer: per metterle insieme, ognuno copia le sue bozze nella chat del gruppo.</p>
 </div>
 <script>
 const FAM={C:['Comunicazione','cosa si dice e dove: social, messaggi, trovate','Cosa gli diciamo in questo momento, e dove lo raggiungiamo?'],R:['Prezzo e pagamento','quanto costa, come si legge, come si paga','Qui il prezzo si capisce? E si riesce a pagare?'],O:['Offerta','cosa si vende: pacchetti, moduli, garanzie','Gli serve qualcosa di diverso da quello che vendiamo oggi?'],N:['Canali','dove si compra e ci si informa','Dove ci cerca e dove può andare avanti, in questa tappa?'],U:['Persone','consulente, montatori, chi risponde','Chi gli sta accanto qui, e cosa deve saper fare?'],X:['Processo','tempi, ordine, consegna, montaggio','Cosa deve succedere, in che tempi, perché vada liscio?'],V:['Vedere e toccare','il progetto, il negozio, i campioni','Cosa può vedere o toccare per decidere tranquillo?']};
@@ -207,54 +213,59 @@ const T=[
 ['X','Recensione chiesta dopo il montaggio','oggi arriva alla firma: misura solo il negozio','basso','SA']]}];
 
 
-const KEY='pensarecasa-mappa-v2';
-let st={scelte:{},mie:{}};try{st=Object.assign(st,JSON.parse(localStorage.getItem(KEY))||{})}catch(e){}
+const KEY='pensarecasa-bozze-v3';
+let st={bozze:{},mie:{}};try{st=Object.assign(st,JSON.parse(localStorage.getItem(KEY))||{})}catch(e){}
 const FK=Object.keys(FAM);
-let cur=0,aperta='C',addF=null;
+let cur=0,aperta='C',addF=null,openK=null;
 const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const salva=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
-const sel=i=>st.scelte[i]||[];
+const bz=(i,k)=>(st.bozze[i]||{})[k]||[];
+const haBozze=i=>Object.values(st.bozze[i]||{}).some(a=>a.length);
 function tecs(i){return T[i].tec.map((x,j)=>({k:'b'+j,f:x[0],n:x[1],r:x[2],c:x[3],m:x[4]})).concat((st.mie[i]||[]).map(u=>({k:'u'+u.id,f:u.f,n:u.n,r:'',c:null,m:u.m,mia:1})))}
 const matN=m=>m.split('').map(x=>MAT[x][0].toLowerCase()).join(' + ');
 
 function strada(){
- $('#strada').innerHTML=T.map((t,i)=>`<button class="tp${i===cur?' on':''}${sel(i).length&&i!==cur?' fatta':''}" data-t="${i}">${i+1} · ${t.c}</button>`).join('');
+ $('#strada').innerHTML=T.map((t,i)=>`<button class="tp${i===cur?' on':''}${haBozze(i)&&i!==cur?' fatta':''}" data-t="${i}">${i+1} · ${t.c}</button>`).join('');
  const on=$('#strada .on');if(on)on.scrollIntoView({block:'nearest',inline:'center'});
 }
-function tecHTML(x,s){return `<button class="tec${s.includes(x.k)?' on':''}" data-k="${x.k}"><span class="box">${s.includes(x.k)?'✓':''}</span><span class="tx"><b>${x.n}</b>${x.r?`<span>${x.r}</span>`:''}<span class="tags">${x.m.split('').map(m=>`<span class="tag">${MAT[m][0].toLowerCase()}</span>`).join('')}${x.c?`<span class="tag c">costo ${x.c}</span>`:'<span class="tag c">idea vostra</span>'}</span></span>${x.mia?`<span class="del" data-del="${x.k}" aria-label="Togli">✕</span>`:''}</button>`}
+function tecHTML(x){
+ const b=bz(cur,x.k),open=openK===x.k;
+ const lista=b.length?`<ul class="bz">${b.map(y=>`<li><span class="bt">${esc(y.t)}</span><span class="bza"><button data-ed="${x.k}|${y.id}">modifica</button><button data-rm="${x.k}|${y.id}">togli</button></span></li>`).join('')}</ul>`:'';
+ const form=open?`<div class="scrivi"><textarea id="bozza" rows="3" placeholder="Una bozza di idea: anche grezza, anche a metà"></textarea><div class="az"><button class="btn pri" data-a="salvabozza">Aggiungi la bozza</button><button class="btn" data-a="chiudi">Chiudi</button></div></div>`:`<button class="add" data-o="${x.k}">+ scrivi una bozza</button>`;
+ return `<div class="tec${b.length?' piena':''}" id="k-${x.k}"><div class="tx"><b>${esc(x.n)}</b>${x.r?`<span>${x.r}</span>`:''}<span class="tags">${x.m.split('').map(m=>`<span class="tag">${MAT[m][0].toLowerCase()}</span>`).join('')}${x.c?`<span class="tag c">costo ${x.c}</span>`:'<span class="tag c">tecnica vostra</span>'}${x.mia?`<button class="del" data-del="${x.k}">togli la tecnica</button>`:''}</span></div>${lista}${form}</div>`;
+}
 function tappa(){
- const t=T[cur],s=sel(cur),ts=tecs(cur);
+ const t=T[cur],ts=tecs(cur);
  const chi=PERS.filter(p=>p.t[cur+1]).map(p=>`<i style="background:${p.c}">${p.n}</i> ${p.t[cur+1]}`).join('<br>');
  const fams=FK.map((f,n)=>{
-  const q=ts.filter(x=>x.f===f),ok=q.some(x=>s.includes(x.k)),open=aperta===f;
-  const stato=ok?'scelta fatta':q.length?'':'ancora vuota';
+  const q=ts.filter(x=>x.f===f),pieno=q.some(x=>bz(cur,x.k).length),open=aperta===f;
   let body='';
   if(open){
-   const form=addF===f?`<div class="form" id="form"><input id="nome" placeholder="La vostra idea, in poche parole" maxlength="80"><div class="riga"><span class="et">Di cosa è fatta (una o più)</span>${Object.keys(MAT).map(k=>`<button class="btn" data-fm="${k}">${MAT[k][0]}</button>`).join('')}</div><div class="az"><button class="btn pri" data-a="aggiungi">Aggiungi</button><button class="btn" data-a="annulla">Annulla</button></div></div>`:`<button class="add" data-add="${f}">+ aggiungi un'idea vostra</button>`;
+   const form=addF===f?`<div class="form" id="form"><input id="nome" placeholder="Il nome della tecnica che manca" maxlength="80"><div class="riga"><span class="et">Di cosa è fatta (una o più)</span>${Object.keys(MAT).map(k=>`<button class="btn" data-fm="${k}">${MAT[k][0]}</button>`).join('')}</div><div class="az"><button class="btn pri" data-a="aggiungi">Aggiungi</button><button class="btn" data-a="annulla">Annulla</button></div></div>`:`<button class="add sott" data-add="${f}">+ aggiungi una tecnica che manca</button>`;
    const nx=FK[n+1];
-   body=`<div class="fb"><p class="dom">${FAM[f][2]}</p>${q.length?q.map(x=>tecHTML(x,s)).join(''):'<p class="vuoto">Non abbiamo ancora pensato niente qui.</p>'}${form}<div class="az avanti">${nx?`<button class="btn pri" data-f="${nx}">Avanti: ${FAM[nx][0]} →</button>`:`<button class="btn pri" data-a="riepilogo">Vai al riepilogo della tappa →</button>`}</div></div>`;
+   body=`<div class="fb"><p class="dom">${FAM[f][2]}</p>${q.length?q.map(tecHTML).join(''):'<p class="vuoto">Non abbiamo ancora pensato tecniche qui.</p>'}${form}<div class="az avanti">${nx?`<button class="btn pri" data-f="${nx}">Avanti: ${FAM[nx][0]} →</button>`:`<button class="btn pri" data-a="riepilogo">Vai alle bozze della tappa →</button>`}</div></div>`;
   }
-  return `<div class="fam${open?' open':''}${ok?' ok':''}" id="f-${f}"><button class="fh" data-f="${f}"><span class="n">${ok?'✓':n+1}</span><span class="nm">${FAM[f][0]}</span><span class="st">${stato}</span></button>${body}</div>`}).join('');
+  return `<div class="fam${open?' open':''}${pieno?' ok':''}" id="f-${f}"><button class="fh" data-f="${f}"><span class="n">${n+1}</span><span class="nm">${FAM[f][0]}</span></button>${body}</div>`}).join('');
  $('#tappa').innerHTML=`<span class="passo">Tappa ${cur+1} di 12</span><h2>${t.n}</h2><p class="buco"><b>Cosa manca:</b> ${t.buco}</p>${chi?`<p class="chi">Qui si decide per:<br>${chi}</p>`:''}${fams}`;
 }
+function righe(i){return tecs(i).map(x=>({x,b:bz(i,x.k)})).filter(r=>r.b.length)}
 function mix(){
- const ts=tecs(cur),s=sel(cur),q=ts.filter(x=>s.includes(x.k));
+ const r=righe(cur);
  const nx=cur<11?`<div class="az"><button class="btn pri" data-t="${cur+1}">Passa alla tappa ${cur+2}: ${T[cur+1].c} →</button></div>`:'';
- if(!q.length){$('#mix').innerHTML=`<h3>Riepilogo della tappa ${cur+1}</h3><p class="sub">Ancora niente di scelto. Se questa tappa per voi va già bene, potete passare oltre.</p>${nx}`;return}
- const fs=[...new Set(q.map(x=>x.f))],ms=[...new Set(q.map(x=>x.m).join('').split(''))];
- const tipo=fs.length>1?`Tecnica mista: ${fs.map(f=>FAM[f][0].toLowerCase()).join(' + ')}.`:`Una famiglia sola: ${FAM[fs[0]][0].toLowerCase()}. Potete aggiungere una tecnica di un'altra famiglia.`;
- const alto=q.some(x=>x.c==='alto'),mie=q.some(x=>x.mia);
- $('#mix').innerHTML=`<h3>Riepilogo della tappa ${cur+1}</h3><ul>${q.map(x=>`<li><b>${x.n}</b> <span class="sub">· ${FAM[x.f][0].toLowerCase()}</span></li>`).join('')}</ul><p class="tipo">${tipo}</p><p class="sub">Fatta di: ${ms.map(m=>MAT[m][0].toLowerCase()).join(', ')}.</p>
- <p class="sub" style="margin-top:10px">Prima di andare avanti, chiedetevi:</p><ul class="q">${mie?'<li><b>Ci sono idee vostre:</b> quanto costano?</li>':''}<li>${alto?'<b>C\'è una tecnica dal costo alto:</b> chi la paga, se l\'azienda non ha soldi da parte?':'Costa poco o si ripaga presto?'}</li><li>Funziona anche nei circa 30 negozi partner?</li><li>Si fa in due anni?</li><li>Febal lo fa già? Se sì, cosa la rende diversa?</li></ul>${nx}`;
+ if(!r.length){$('#mix').innerHTML=`<h3>Le bozze della tappa ${cur+1}</h3><p class="sub">Ancora nessuna. Aprite una tecnica e scrivete «+ scrivi una bozza».</p>${nx}`;return}
+ const fs=[...new Set(r.map(y=>y.x.f))];
+ $('#mix').innerHTML=`<h3>Le bozze della tappa ${cur+1}</h3>${r.map(y=>`<p class="rt">${esc(y.x.n)} <span class="sub">· ${FAM[y.x.f][0].toLowerCase()}</span></p><ul>${y.b.map(z=>`<li>${esc(z.t)}</li>`).join('')}</ul>`).join('')}${fs.length>1?`<p class="tipo">Toccano più famiglie: ${fs.map(f=>FAM[f][0].toLowerCase()).join(', ')}. Si possono unire in un'idea mista?</p>`:''}
+ <p class="sub" style="margin-top:10px">Per ogni bozza, chiedetevi:</p><ul class="q"><li>Costa poco o si ripaga presto? Se costa, chi la paga?</li><li>Funziona anche nei circa 30 negozi partner?</li><li>Si fa in due anni?</li><li>Febal lo fa già? Se sì, cosa la rende diversa?</li></ul>${nx}`;
 }
 function testoPiano(html){
- return T.map((t,i)=>{const s=sel(i);if(!s.length)return'';const q=tecs(i).filter(x=>s.includes(x.k));
-  const it=q.map(x=>html?`${x.n} <span class="sub">(${FAM[x.f][0].toLowerCase()} · ${matN(x.m)})</span>`:`${x.n} (${FAM[x.f][0].toLowerCase()} · ${matN(x.m)}${x.mia?' · idea vostra':''})`).join(' + ');
-  return html?`<li><b>${i+1} · ${t.n}:</b> ${it}</li>`:`${i+1}. ${t.n}: ${it}`}).filter(Boolean);
+ return T.map((t,i)=>{const r=righe(i);if(!r.length)return'';
+  if(html)return `<li><b>${i+1} · ${t.n}</b><ul>${r.map(y=>y.b.map(z=>`<li>${esc(z.t)} <span class="sub">(${esc(y.x.n)})</span></li>`).join('')).join('')}</ul></li>`;
+  return `${i+1}. ${t.n}\n`+r.map(y=>y.b.map(z=>`- ${z.t} (${y.x.n} · ${FAM[y.x.f][0].toLowerCase()})`).join('\n')).join('\n')}).filter(Boolean);
 }
 function piano(){
  const r=testoPiano(true);
- $('#piano').innerHTML=`<h3>Il piano, tappa per tappa</h3>${r.length?`<ul>${r.join('')}</ul><div class="az"><button class="btn" data-a="copia">Copia il piano</button><button class="btn" data-a="azzera">Azzera</button></div>`:'<p class="sub">Qui si raccolgono le scelte di tutte le tappe.</p>'}`;
+ $('#piano').innerHTML=`<h3>Tutte le bozze, tappa per tappa</h3>${r.length?`<ul>${r.join('')}</ul><div class="az"><button class="btn" data-a="copia">Copia le bozze</button><button class="btn" data-a="azzera">Azzera</button></div>`:'<p class="sub">Qui si raccolgono le bozze di tutte le tappe.</p>'}`;
 }
 function spiega(){
  $('#spfam').innerHTML=Object.values(FAM).map(f=>`<li><b>${f[0]}</b>: ${f[1]}</li>`).join('');
@@ -262,23 +273,29 @@ function spiega(){
 }
 function tutto(){strada();tappa();mix();piano()}
 const vai=el=>el&&el.scrollIntoView({block:'start',behavior:'smooth'});
+function dopoBozze(){salva();strada();tappa();mix();piano()}
 document.addEventListener('click',e=>{
- const b=e.target.closest('[data-t],[data-f],[data-k],[data-del],[data-add],[data-fm],[data-a]');if(!b)return;
+ const b=e.target.closest('[data-t],[data-f],[data-o],[data-ed],[data-rm],[data-del],[data-add],[data-fm],[data-a]');if(!b)return;
  const d=b.dataset;
- if(d.del){e.stopPropagation();if(!confirm('Togliere questa idea?'))return;const id=d.del.slice(1);st.mie[cur]=(st.mie[cur]||[]).filter(u=>u.id!==id);st.scelte[cur]=sel(cur).filter(k=>k!==d.del);salva();tutto()}
- else if(d.t!==undefined){cur=+d.t;aperta='C';addF=null;tutto();vai($('#tappa'))}
- else if(d.f){const chiudi=aperta===d.f&&b.classList.contains('fh');aperta=chiudi?null:d.f;addF=null;tappa();if(!chiudi)vai($('#f-'+d.f))}
- else if(d.k){const s=sel(cur);st.scelte[cur]=s.includes(d.k)?s.filter(x=>x!==d.k):[...s,d.k];salva();strada();tappa();mix();piano()}
- else if(d.add){addF=d.add;tappa();setTimeout(()=>$('#nome')&&$('#nome').focus(),50)}
+ if(d.del){if(!confirm('Togliere questa tecnica e le sue bozze?'))return;const id=d.del.slice(1);st.mie[cur]=(st.mie[cur]||[]).filter(u=>u.id!==id);if(st.bozze[cur])delete st.bozze[cur][d.del];dopoBozze()}
+ else if(d.t!==undefined){cur=+d.t;aperta='C';addF=null;openK=null;tutto();vai($('#tappa'))}
+ else if(d.f){const chiudi=aperta===d.f&&b.classList.contains('fh');aperta=chiudi?null:d.f;addF=null;openK=null;tappa();if(!chiudi)vai($('#f-'+d.f))}
+ else if(d.o){openK=d.o;tappa();setTimeout(()=>$('#bozza')&&$('#bozza').focus(),50)}
+ else if(d.a==='chiudi'){openK=null;tappa()}
+ else if(d.a==='salvabozza'){const v=$('#bozza').value.trim();if(!v){$('#bozza').focus();return}
+  const o=st.bozze[cur]=st.bozze[cur]||{};(o[openK]=o[openK]||[]).push({id:Date.now().toString(36),t:v});const k=openK;openK=null;dopoBozze();const el=$('#k-'+k);if(el)el.scrollIntoView({block:'nearest'})}
+ else if(d.ed){const[k,id]=d.ed.split('|');const y=bz(cur,k).find(z=>z.id===id);if(!y)return;const v=prompt('Modifica la bozza:',y.t);if(v!==null&&v.trim()){y.t=v.trim();dopoBozze()}}
+ else if(d.rm){const[k,id]=d.rm.split('|');if(!confirm('Togliere questa bozza?'))return;st.bozze[cur][k]=bz(cur,k).filter(z=>z.id!==id);dopoBozze()}
+ else if(d.add){addF=d.add;openK=null;tappa();setTimeout(()=>$('#nome')&&$('#nome').focus(),50)}
  else if(d.fm){b.classList.toggle('on')}
  else if(d.a==='annulla'){addF=null;tappa()}
  else if(d.a==='riepilogo'){vai($('#mix'))}
  else if(d.a==='aggiungi'){
   const n=$('#nome').value.trim();const m=[...document.querySelectorAll('#form [data-fm].on')].map(x=>x.dataset.fm).join('');
   if(!n){$('#nome').focus();return}if(!m){alert('Scegli di cosa è fatta: almeno una cosa.');return}
-  const id=Date.now().toString(36);(st.mie[cur]=st.mie[cur]||[]).push({id,f:addF,n,m});st.scelte[cur]=[...sel(cur),'u'+id];addF=null;salva();tutto()}
- else if(d.a==='copia'){const txt='Pensarecasa · il piano tappa per tappa\n'+testoPiano(false).join('\n');navigator.clipboard.writeText(txt).then(()=>{b.textContent='Copiato'},()=>{prompt('Copia da qui:',txt)})}
- else if(d.a==='azzera'){if(confirm('Togliere tutte le scelte e le idee aggiunte?')){st={scelte:{},mie:{}};salva();tutto()}}
+  const id=Date.now().toString(36);(st.mie[cur]=st.mie[cur]||[]).push({id,f:addF,n,m});addF=null;openK='u'+id;salva();tappa();setTimeout(()=>$('#bozza')&&$('#bozza').focus(),50)}
+ else if(d.a==='copia'){const txt='Pensarecasa · le bozze tappa per tappa\n\n'+testoPiano(false).join('\n\n');navigator.clipboard.writeText(txt).then(()=>{b.textContent='Copiate'},()=>{prompt('Copia da qui:',txt)})}
+ else if(d.a==='azzera'){if(confirm('Togliere tutte le bozze e le tecniche aggiunte?')){st={bozze:{},mie:{}};salva();tutto()}}
 });
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='nome'){e.preventDefault();$('[data-a="aggiungi"]').click()}});
 spiega();tutto();
