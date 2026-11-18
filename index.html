@@ -52,6 +52,8 @@ h3{font-family:'Libre Baskerville',Georgia,serif;font-size:15px;margin:0 0 8px}
 .scrivi textarea{font:inherit;font-size:15px;width:100%;padding:7px 8px;border:1.5px solid #22201C;border-radius:7px;background:#fffdf8;resize:vertical}
 .tec .add{margin-top:8px}
 .add.sott{margin-top:4px}
+.vuote{border-top:1px solid #e3dccd;padding:10px 0 2px}
+.riga.a-capo{flex-wrap:wrap;white-space:normal;margin-top:6px}
 .rt{font-weight:500;font-size:14px;margin:10px 0 0}
 .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .tag{font-size:11px;color:#4a453c;background:#efe8da;border-radius:8px;padding:0 6px;line-height:17px}
@@ -80,7 +82,7 @@ details li{margin:4px 0}
 </style></head><body><div class="wrap">
 <h1>Pensarecasa · come curare ogni tappa</h1>
 <div class="intro">Un procedimento per il brainstorming, una tappa alla volta:
-<ol><li>leggi cosa manca al cliente in quella tappa;</li><li>passa le sette famiglie di tecniche, una dopo l'altra: per ognuna c'è una domanda e le tecniche già pensate;</li><li>dentro ogni tecnica scrivete le vostre bozze di idee, anche grezze; se manca una tecnica, aggiungetela;</li><li>alla fine della tappa rileggete le bozze con le domande dei paletti, e passate alla successiva.</li></ol></div>
+<ol><li>leggi cosa manca al cliente in quella tappa;</li><li>passa le famiglie di tecniche, una dopo l'altra: per ognuna c'è una domanda e le tecniche già pensate (quelle ancora vuote stanno in fondo, in una riga);</li><li>dentro ogni tecnica scrivete le vostre bozze di idee, anche grezze; se manca una tecnica, aggiungetela;</li><li>alla fine della tappa rileggete le bozze con le domande dei paletti, e passate alla successiva.</li></ol></div>
 
 <div class="riga strada" id="strada"></div>
 <div class="card" id="tappa"></div>
@@ -128,16 +130,14 @@ const T=[
 ['C','Ironia','punzecchiare i grandi. Esempio: IKEA «Bookbook» (2014)','basso','S'],
 ['C','Il cliente come pubblicità','sono i clienti a far girare il marchio. Esempio: Spotify Wrapped','basso','SA'],
 ['C','Creator che arredano casa','persone vicine alla target','medio','PS'],
-['C','Valori con i fatti','sostenibilità dimostrata. Esempio: IKEA «Buy Back Friday» (2020)','medio','K'],
+['C','Valori con i fatti','sostenibilità dimostrata, non solo detta','medio','K'],
 ['O','Un prodotto d\'ingresso','un pezzo o una stanza a prezzo basso, che porta il marchio a chi spende poco','medio','L'],
 ['N','Un angolo dove manca il negozio','uno spazio piccolo o temporaneo nelle città senza Pensarecasa','alto','L']]},
 {n:'Si informa e confronta',c:'Si informa',buco:'Sapere prima di entrare quanto costa il tutto (trasporto, montaggio, tempi) e quanto costa una stanza sola. Per chi non ha un negozio vicino, andare avanti senza entrarci.',tec:[
 ['R','Preventivatore online','con trasporto e montaggio compresi','medio','SA'],
-['R','Simulatore della rata','quanto al mese, già sul sito','basso','S'],
 ['R','Il prezzo chiaro come messaggio','Esempio: Tesla, prezzo fisso senza trattativa','basso','K'],
-['O','Pacchetto tutto compreso','un prezzo solo, anche per una stanza sola','basso','K'],
 ['O','Pezzo o stanza singola','acquisti sotto i 5.000 €','medio','L'],
-['O','Moduli','si parte da poco e si aggiunge dopo','medio','L'],
+['O','Moduli','si parte da poco e si aggiunge dopo, anche quando la famiglia cresce','medio','L'],
 ['N','Acquisto online dei pezzi piccoli','camerette con il prezzo, soggiorno «Nordico» comprabile','medio','S'],
 ['C','Le recensioni del dopo','far vedere com\'è andata la consegna, non solo il negozio','basso','S'],
 ['V','Configuratore 3D o in realtà aumentata','la cucina vista nella propria stanza','alto','S'],
@@ -158,9 +158,7 @@ const T=[
 {n:'Riceve progetto e prezzo',c:'Progetto',buco:'Vedere il progetto e un prezzo completo e confrontabile prima di firmare. Per chi rifà una casa vecchia, anche un rilievo affidabile e il vecchio portato via.',tec:[
 ['R','Preventivo sempre nella stessa forma','completo, da mettere accanto a quello degli altri','basso','S'],
 ['O','Cambiare il progetto gratis fino alla firma','prova senza rischio. Esempio: Casper, 100 notti di prova','basso','K'],
-['O','Pacchetto con tutto dentro','trasporto, montaggio e smontaggio del vecchio','basso','K'],
-['O','Ritiro del vecchio','l\'AD ci sta già pensando','medio','P'],
-['O','Garanzia lunga','Scavolini dà 10 anni, Lube 5, IKEA 25 sulle cucine','medio','K'],
+['O','Pacchetto tutto compreso','un prezzo solo con trasporto, montaggio e smontaggio del vecchio, anche per una stanza sola','basso','K'],
 ['X','Rilievo con lo scanner del telefono','misure precise anche in una casa storta','medio','SA'],
 ['V','Render garantito in ogni negozio','oggi è a carico del negozio e non è promesso','medio','SK'],
 ['V','Il progetto da portare a casa','salvato online, da guardare con il partner o i genitori','basso','S'],
@@ -170,14 +168,12 @@ const T=[
 ['R','Rate per i piccoli importi','tipo Klarna o Scalapay','basso','SA'],
 ['R','Simulatore della rata','sul sito e al tavolo','basso','S'],
 ['R','La rata come prezzo principale','Esempio: IKEA «Buy with your time» (2022)','basso','K'],
-['O','Moduli','un pezzo ora, il resto dopo','medio','L'],
 ['O','Noleggio o abbonamento','si paga l\'uso invece del mobile','alto','K'],
 ['U','Le rate tenute separate dal salire di fascia','il consulente non le usa per vendere di più','basso','PK']]},
 {n:'Firma l\'ordine',c:'Firma',buco:'Sapere per iscritto cosa tutela l\'acconto, soprattutto quando è grosso.',tec:[
 ['R','Una garanzia scritta sull\'acconto','cosa succede ai soldi se qualcosa va storto','medio','K'],
 ['R','Acconto più basso o a tappe','pesa meno su chi compra la prima casa','medio','K'],
-['O','Garanzia lunga nel contratto','scritta, con la durata','medio','K'],
-['X','Condizioni di vendita online','oggi non ce ne sono','basso','SK'],
+['R','Condizioni di vendita online','oggi non ce ne sono','basso','SK'],
 ['X','Riepilogo scritto mandato subito','su WhatsApp o per email','basso','S'],
 ['X','Firma elettronica e acconto tracciato','tutto in un\'area cliente','basso','S']]},
 {n:'Aspetta',c:'Aspetta',buco:'Una data scritta e un modo di vedere a che punto è l\'ordine. È il bisogno più netto di chi spende di più.',tec:[
@@ -193,36 +189,34 @@ const T=[
 ['X','Montaggio garantito','«giusto alla prima, o lo rifacciamo gratis», detto in pubblico','medio','K'],
 ['U','Lista di controllo del montatore','con le foto a lavoro finito','basso','PS'],
 ['U','Montatori preparati e riconoscibili','gli stessi modi del negozio, anche a casa','medio','P'],
-['O','Pacchetto con smontaggio del vecchio','tolto e portato via','medio','P'],
-['O','Ritiro dell\'usato','il vecchio rivenduto o rigenerato','medio','P']]},
+['O','Smontaggio e ritiro del vecchio','tolto, portato via e, se si può, rigenerato; l\'AD ci sta già pensando','medio','P']]},
 {n:'Vive con i mobili',c:'Dopo',buco:'Un canale con tempi di risposta e una garanzia scritta che duri quanto l\'uso.',tec:[
 ['U','Assistenza su WhatsApp','con tempi di risposta promessi','basso','PS'],
 ['U','Assistenza in video','e segnalazione del problema con una foto','basso','PS'],
 ['C','Brevi video per i piccoli interventi','regolare un\'anta, cambiare un pezzo','basso','S'],
 ['C','Richiami al momento giusto','controllo dopo un anno, refitting','basso','SA'],
-['O','Ricomprare o ritirare i mobili usati','Esempio: IKEA «Buy Back Friday»','medio','K'],
-['O','Garanzia lunga','Scavolini 10 anni, Lube 5, IKEA 25','medio','K'],
-['O','Refitting','ante e colore nuovi per circa 1.500 €; l\'AD ci sta già pensando','basso','P'],
-['O','Moduli','si aggiunge quando la famiglia cresce','medio','L']]},
+['O','Ricomprare i mobili usati','e un motivo per tornare. Esempio: IKEA «Buy Back Friday» (2020)','medio','K'],
+['O','Garanzia lunga','scritta nel contratto. Scavolini dà 10 anni, Lube 5, IKEA 25 sulle cucine','medio','K'],
+['O','Refitting','ante e colore nuovi per circa 1.500 €; l\'AD ci sta già pensando','basso','P']]},
 {n:'Giudica e ne parla',c:'Ne parla',buco:'Un giudizio raccolto dopo la consegna, che racconti il percorso intero, e un legame con chi tornerà.',tec:[
 ['C','Contenuti dei clienti','le loro case, condivise','basso','S'],
-['C','Programma per chi torna','oggi 68 recensioni su 996 dicono di essere tornate','basso','SA'],
+['O','Programma per chi torna','oggi 68 recensioni su 996 dicono di essere tornate','basso','SA'],
 ['C','Il nome del cliente sul prodotto','Esempio: «Share a Coke», col nome sulla lattina','basso','L'],
-['R','Porta un amico','un premio a chi consiglia','basso','K'],
-['O','Ritiro dell\'usato','un motivo per tornare','medio','P'],
+['C','Porta un amico','un premio a chi consiglia','basso','K'],
 ['X','Recensione chiesta dopo il montaggio','oggi arriva alla firma: misura solo il negozio','basso','SA']]}];
 
 
-const KEY='pensarecasa-bozze-v3';
+const KEY='pensarecasa-bozze-v4';
 let st={bozze:{},mie:{}};try{st=Object.assign(st,JSON.parse(localStorage.getItem(KEY))||{})}catch(e){}
 const FK=Object.keys(FAM);
-let cur=0,aperta='C',addF=null,openK=null;
+let cur=0,aperta,addF=null,openK=null,filt=null;
+const slug=n=>n.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g,'-');
 const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const salva=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
 const bz=(i,k)=>(st.bozze[i]||{})[k]||[];
 const haBozze=i=>Object.values(st.bozze[i]||{}).some(a=>a.length);
-function tecs(i){return T[i].tec.map((x,j)=>({k:'b'+j,f:x[0],n:x[1],r:x[2],c:x[3],m:x[4]})).concat((st.mie[i]||[]).map(u=>({k:'u'+u.id,f:u.f,n:u.n,r:'',c:null,m:u.m,mia:1})))}
+function tecs(i){return T[i].tec.map((x,j)=>({k:'b'+slug(x[1]),f:x[0],n:x[1],r:x[2],c:x[3],m:x[4]})).concat((st.mie[i]||[]).map(u=>({k:'u'+u.id,f:u.f,n:u.n,r:'',c:null,m:u.m,mia:1})))}
 const matN=m=>m.split('').map(x=>MAT[x][0].toLowerCase()).join(' + ');
 
 function strada(){
@@ -235,21 +229,23 @@ function tecHTML(x){
  const form=open?`<div class="scrivi"><textarea id="bozza" rows="3" placeholder="Una bozza di idea: anche grezza, anche a metà"></textarea><div class="az"><button class="btn pri" data-a="salvabozza">Aggiungi la bozza</button><button class="btn" data-a="chiudi">Chiudi</button></div></div>`:`<button class="add" data-o="${x.k}">+ scrivi una bozza</button>`;
  return `<div class="tec${b.length?' piena':''}" id="k-${x.k}"><div class="tx"><b>${esc(x.n)}</b>${x.r?`<span>${x.r}</span>`:''}<span class="tags">${x.m.split('').map(m=>`<span class="tag">${MAT[m][0].toLowerCase()}</span>`).join('')}${x.c?`<span class="tag c">costo ${x.c}</span>`:'<span class="tag c">tecnica vostra</span>'}${x.mia?`<button class="del" data-del="${x.k}">togli la tecnica</button>`:''}</span></div>${lista}${form}</div>`;
 }
+const visibili=i=>FK.filter(f=>tecs(i).some(x=>x.f===f));
 function tappa(){
- const t=T[cur],ts=tecs(cur);
+ const t=T[cur],ts=tecs(cur),vis=FK.filter(f=>ts.some(x=>x.f===f)||addF===f),vuote=FK.filter(f=>!vis.includes(f));
+ if(aperta===undefined)aperta=vis[0];
  const chi=PERS.filter(p=>p.t[cur+1]).map(p=>`<i style="background:${p.c}">${p.n}</i> ${p.t[cur+1]}`).join('<br>');
- const fams=FK.map((f,n)=>{
+ const fams=vis.map((f,n)=>{
   const q=ts.filter(x=>x.f===f),pieno=q.some(x=>bz(cur,x.k).length),open=aperta===f;
   let body='';
   if(open){
    const form=addF===f?`<div class="form" id="form"><input id="nome" placeholder="Il nome della tecnica che manca" maxlength="80"><div class="riga"><span class="et">Di cosa è fatta (una o più)</span>${Object.keys(MAT).map(k=>`<button class="btn" data-fm="${k}">${MAT[k][0]}</button>`).join('')}</div><div class="az"><button class="btn pri" data-a="aggiungi">Aggiungi</button><button class="btn" data-a="annulla">Annulla</button></div></div>`:`<button class="add sott" data-add="${f}">+ aggiungi una tecnica che manca</button>`;
-   const nx=FK[n+1];
-   body=`<div class="fb"><p class="dom">${FAM[f][2]}</p>${q.length?q.map(tecHTML).join(''):'<p class="vuoto">Non abbiamo ancora pensato tecniche qui.</p>'}${form}<div class="az avanti">${nx?`<button class="btn pri" data-f="${nx}">Avanti: ${FAM[nx][0]} →</button>`:`<button class="btn pri" data-a="riepilogo">Vai alle bozze della tappa →</button>`}</div></div>`;
+   const nx=vis[n+1];
+   body=`<div class="fb"><p class="dom">${FAM[f][2]}</p>${q.length?q.map(tecHTML).join(''):'<p class="vuoto">Famiglia ancora vuota in questa tappa: scrivete la tecnica che manca.</p>'}${form}<div class="az avanti">${nx?`<button class="btn pri" data-f="${nx}">Avanti: ${FAM[nx][0]} →</button>`:`<button class="btn pri" data-a="riepilogo">Vai alle bozze della tappa →</button>`}</div></div>`;
   }
   return `<div class="fam${open?' open':''}${pieno?' ok':''}" id="f-${f}"><button class="fh" data-f="${f}"><span class="n">${n+1}</span><span class="nm">${FAM[f][0]}</span></button>${body}</div>`}).join('');
- $('#tappa').innerHTML=`<span class="passo">Tappa ${cur+1} di 12</span><h2>${t.n}</h2><p class="buco"><b>Cosa manca:</b> ${t.buco}</p>${chi?`<p class="chi">Qui si decide per:<br>${chi}</p>`:''}${fams}`;
+ $('#tappa').innerHTML=`<span class="passo">Tappa ${cur+1} di 12</span><h2>${t.n}</h2><p class="buco"><b>Cosa manca:</b> ${t.buco}</p>${chi?`<p class="chi">Qui si decide per:<br>${chi}</p>`:''}${fams}${vuote.length?`<div class="vuote"><p class="sub">Ancora vuote in questa tappa. Se vi viene in mente qualcosa, aggiungete una tecnica:</p><div class="riga a-capo">${vuote.map(f=>`<button class="btn" data-add="${f}">+ ${FAM[f][0]}</button>`).join('')}</div></div>`:''}`;
 }
-function righe(i){return tecs(i).map(x=>({x,b:bz(i,x.k)})).filter(r=>r.b.length)}
+function righe(i,fl){return tecs(i).filter(x=>!fl||x.m.includes(fl)).map(x=>({x,b:bz(i,x.k)})).filter(r=>r.b.length)}
 function mix(){
  const r=righe(cur);
  const nx=cur<11?`<div class="az"><button class="btn pri" data-t="${cur+1}">Passa alla tappa ${cur+2}: ${T[cur+1].c} →</button></div>`:'';
@@ -259,13 +255,14 @@ function mix(){
  <p class="sub" style="margin-top:10px">Per ogni bozza, chiedetevi:</p><ul class="q"><li>Costa poco o si ripaga presto? Se costa, chi la paga?</li><li>Funziona anche nei circa 30 negozi partner?</li><li>Si fa in due anni?</li><li>Febal lo fa già? Se sì, cosa la rende diversa?</li></ul>${nx}`;
 }
 function testoPiano(html){
- return T.map((t,i)=>{const r=righe(i);if(!r.length)return'';
+ return T.map((t,i)=>{const r=righe(i,filt);if(!r.length)return'';
   if(html)return `<li><b>${i+1} · ${t.n}</b><ul>${r.map(y=>y.b.map(z=>`<li>${esc(z.t)} <span class="sub">(${esc(y.x.n)})</span></li>`).join('')).join('')}</ul></li>`;
   return `${i+1}. ${t.n}\n`+r.map(y=>y.b.map(z=>`- ${z.t} (${y.x.n} · ${FAM[y.x.f][0].toLowerCase()})`).join('\n')).join('\n')}).filter(Boolean);
 }
 function piano(){
- const r=testoPiano(true);
- $('#piano').innerHTML=`<h3>Tutte le bozze, tappa per tappa</h3>${r.length?`<ul>${r.join('')}</ul><div class="az"><button class="btn" data-a="copia">Copia le bozze</button><button class="btn" data-a="azzera">Azzera</button></div>`:'<p class="sub">Qui si raccolgono le bozze di tutte le tappe.</p>'}`;
+ const r=testoPiano(true),tot=T.some((t,i)=>righe(i).length);
+ const fl=tot?`<p class="sub">Mostra le bozze fatte di:</p><div class="riga a-capo" style="margin:6px 0 4px"><button class="btn${filt?'':' on'}" data-m="">Tutto</button>${Object.keys(MAT).map(k=>`<button class="btn${filt===k?' on':''}" data-m="${k}">${MAT[k][0]}</button>`).join('')}</div>`:'';
+ $('#piano').innerHTML=`<h3>Tutte le bozze, tappa per tappa</h3>${!tot?'<p class="sub">Qui si raccolgono le bozze di tutte le tappe.</p>':fl+(r.length?`<ul>${r.join('')}</ul>`:`<p class="sub">Nessuna bozza su tecniche fatte di ${MAT[filt][0].toLowerCase()}.</p>`)+`<div class="az"><button class="btn" data-a="copia">${filt?'Copia queste bozze':'Copia le bozze'}</button><button class="btn" data-a="azzera">Azzera</button></div>`}`;
 }
 function spiega(){
  $('#spfam').innerHTML=Object.values(FAM).map(f=>`<li><b>${f[0]}</b>: ${f[1]}</li>`).join('');
@@ -275,10 +272,11 @@ function tutto(){strada();tappa();mix();piano()}
 const vai=el=>el&&el.scrollIntoView({block:'start',behavior:'smooth'});
 function dopoBozze(){salva();strada();tappa();mix();piano()}
 document.addEventListener('click',e=>{
- const b=e.target.closest('[data-t],[data-f],[data-o],[data-ed],[data-rm],[data-del],[data-add],[data-fm],[data-a]');if(!b)return;
+ const b=e.target.closest('[data-t],[data-f],[data-o],[data-ed],[data-rm],[data-del],[data-add],[data-fm],[data-m],[data-a]');if(!b)return;
  const d=b.dataset;
  if(d.del){if(!confirm('Togliere questa tecnica e le sue bozze?'))return;const id=d.del.slice(1);st.mie[cur]=(st.mie[cur]||[]).filter(u=>u.id!==id);if(st.bozze[cur])delete st.bozze[cur][d.del];dopoBozze()}
- else if(d.t!==undefined){cur=+d.t;aperta='C';addF=null;openK=null;tutto();vai($('#tappa'))}
+ else if(d.m!==undefined){filt=d.m||null;piano()}
+ else if(d.t!==undefined){cur=+d.t;aperta=undefined;addF=null;openK=null;tutto();vai($('#tappa'))}
  else if(d.f){const chiudi=aperta===d.f&&b.classList.contains('fh');aperta=chiudi?null:d.f;addF=null;openK=null;tappa();if(!chiudi)vai($('#f-'+d.f))}
  else if(d.o){openK=d.o;tappa();setTimeout(()=>$('#bozza')&&$('#bozza').focus(),50)}
  else if(d.a==='chiudi'){openK=null;tappa()}
@@ -286,9 +284,9 @@ document.addEventListener('click',e=>{
   const o=st.bozze[cur]=st.bozze[cur]||{};(o[openK]=o[openK]||[]).push({id:Date.now().toString(36),t:v});const k=openK;openK=null;dopoBozze();const el=$('#k-'+k);if(el)el.scrollIntoView({block:'nearest'})}
  else if(d.ed){const[k,id]=d.ed.split('|');const y=bz(cur,k).find(z=>z.id===id);if(!y)return;const v=prompt('Modifica la bozza:',y.t);if(v!==null&&v.trim()){y.t=v.trim();dopoBozze()}}
  else if(d.rm){const[k,id]=d.rm.split('|');if(!confirm('Togliere questa bozza?'))return;st.bozze[cur][k]=bz(cur,k).filter(z=>z.id!==id);dopoBozze()}
- else if(d.add){addF=d.add;openK=null;tappa();setTimeout(()=>$('#nome')&&$('#nome').focus(),50)}
+ else if(d.add){addF=d.add;aperta=d.add;openK=null;tappa();vai($('#f-'+d.add));setTimeout(()=>$('#nome')&&$('#nome').focus(),50)}
  else if(d.fm){b.classList.toggle('on')}
- else if(d.a==='annulla'){addF=null;tappa()}
+ else if(d.a==='annulla'){addF=null;if(!visibili(cur).includes(aperta))aperta=null;tappa()}
  else if(d.a==='riepilogo'){vai($('#mix'))}
  else if(d.a==='aggiungi'){
   const n=$('#nome').value.trim();const m=[...document.querySelectorAll('#form [data-fm].on')].map(x=>x.dataset.fm).join('');
